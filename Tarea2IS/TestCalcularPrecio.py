@@ -1,7 +1,7 @@
 '''
 Created on 21/4/2015
 
-@author: Chiseng
+@author: NgChiseng
 '''
 import unittest
 from calcularPrecio import calcularPrecio,Tarifa
