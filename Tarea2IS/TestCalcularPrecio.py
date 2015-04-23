@@ -76,8 +76,29 @@ class TestCalcularPrecio(unittest.TestCase):
     def testBordeSuperiorDiaSemanaMaximo(self):
         tarifa1 = Tarifa(100,200)
         tiempoDeReservacionr1 = [datetime.max - timedelta(days = 7), datetime.max]
-        self.assertEqual(calcularPrecio(tarifa1, tiempoDeReservacionr1), 21600.00)    
+        self.assertEqual(calcularPrecio(tarifa1, tiempoDeReservacionr1), 21600.00)
+        
+    #Caso de prueba con Tarifa cero en un dia de la semana
+    #Entrada:    Tiempo de reservacion en horas: 24
+    #            Tasa en bolivares de la hora: 0
+    #Salida Esperada:    0 bolivares(Satisfactorio)
     
+    def testTarifaCeroDiaSemana(self):
+        tarifa1 = Tarifa(0,200)
+        tiempoDeReservacionr1 = [datetime(2015,4,20,23,4), datetime(2015,4,21,23,4)]
+        self.assertEqual(calcularPrecio(tarifa1, tiempoDeReservacionr1), 0)
+    
+    #Caso de prueba con Tarifa de un centimo en un dia de la semana
+    #Entrada:    Tiempo de reservacion en horas: 24
+    #            Tasa en bolivares de la hora: 0.01
+    #Salida Esperada:    0.24 bolivares(Satisfactorio)
+    
+    #Nota: da un error cuando se le da el resultado de 0.24   
+    def testTarifaCentimoDiaSemana(self):
+        tarifa1 = Tarifa(0.01,200)
+        tiempoDeReservacionr1 = [datetime(2015,4,20,23,4), datetime(2015,4,21,23,4)]
+        self.assertEqual(calcularPrecio(tarifa1, tiempoDeReservacionr1), Decimal(0.24).quantize(Decimal('1.00')))
+        
 #--------------------------b)Tiempo No reservable-----------------------------------
 
     #Caso de prueba con el borde inferior
@@ -90,7 +111,10 @@ class TestCalcularPrecio(unittest.TestCase):
     def testBordeInferiorDiaSemanaNR(self):
         tarifa1 = Tarifa(100,200)
         tiempoDeReservacionr1 = [datetime(2015,4,22,13,4), datetime(2015,4,22,13,14)]
-        self.assertEqual(calcularPrecio(tarifa1, tiempoDeReservacionr1), 100.00)
+        try:
+            calcularPrecio(tarifa1, tiempoDeReservacionr1)
+        except:
+            self.assertTrue(True)
         
     #Caso de prueba con el borde superior
     #Descripcion:    trata de evaluar una de las
@@ -102,8 +126,11 @@ class TestCalcularPrecio(unittest.TestCase):
     def testBordeSuperiorDiaSemanaNR(self):
         tarifa1 = Tarifa(100,200)
         tiempoDeReservacionr1 = [datetime(2015,4,22,13,4), datetime(2015,4,29,13,5)]
-        self.assertEqual(calcularPrecio(tarifa1, tiempoDeReservacionr1), 21600.00)
-        
+        try:
+            calcularPrecio(tarifa1, tiempoDeReservacionr1)
+        except:
+            self.assertTrue(True)
+            
     #Caso de prueba con el borde inferior minimo representable
     #Descripcion:    trata de evaluar una de las
     #fronteras cuando la reserva es de  menos de 15 minutos
