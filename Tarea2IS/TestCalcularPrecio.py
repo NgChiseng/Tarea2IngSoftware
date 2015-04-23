@@ -141,10 +141,10 @@ class TestCalcularPrecio(unittest.TestCase):
     #Nota: Nota se da pero un error de Overflow y no como una excepcion que indica que tienen menos
     #de 15 minutos reservados.
           
-    def testBordeInferiorDiaSemanaMinNR(self):
-        tarifa1 = Tarifa(100,200)
-        tiempoDeReservacionr1 = [datetime.min - timedelta(minutes = 15), datetime.min]
-        self.assertEqual(calcularPrecio(tarifa1, tiempoDeReservacionr1), 25.00)
+    #def testBordeInferiorDiaSemanaMinNR(self):
+    #    tarifa1 = Tarifa(100,200)
+    #    tiempoDeReservacionr1 = [datetime.min - timedelta(minutes = 15), datetime.min]
+    #    self.assertEqual(calcularPrecio(tarifa1, tiempoDeReservacionr1), 25.00)
 
     #Caso de prueba con el borde superior maximo representable
     #Descripcion:    trata de evaluar una de las
@@ -153,10 +153,10 @@ class TestCalcularPrecio(unittest.TestCase):
     #            Tasa en bolivares de la hora: 100
     #Salida Esperada:    Error de OverFlow(Satisfactorio)
     
-    def testBordeSuperiorDiaSemanaMaximoNR(self):
-        tarifa1 = Tarifa(100,200)
-        tiempoDeReservacionr1 = [datetime.max, datetime.max + timedelta(days = 7)]
-        self.assertEqual(calcularPrecio(tarifa1, tiempoDeReservacionr1), 21600.00)        
+    #def testBordeSuperiorDiaSemanaMaximoNR(self):
+    #    tarifa1 = Tarifa(100,200)
+    #    tiempoDeReservacionr1 = [datetime.max, datetime.max + timedelta(days = 7)]
+    #    self.assertEqual(calcularPrecio(tarifa1, tiempoDeReservacionr1), 21600.00)        
     
 #--------------------------c)Indefinido---------------------------------------------
 
