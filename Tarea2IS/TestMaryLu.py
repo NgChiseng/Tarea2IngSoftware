@@ -1,7 +1,7 @@
 '''
 Created on 21/4/2015
 
-@author: MaryLu
+@author: Maria Lourdes
 '''
 import unittest
 from calcularPrecio import calcularPrecio,Tarifa
@@ -10,7 +10,7 @@ from datetime import timedelta,datetime
 
 class TestCalcularPrecio(unittest.TestCase):
 
-#--------------------------a)Tiempo reservable--------------------------------------
+#--------------------------a)Tiempo reservable---------------------------------
     
     #Caso de prueba Normal con un dia del fin de la semana
     #Entrada:    Tiempo de reservacion en horas: 24
@@ -24,8 +24,8 @@ class TestCalcularPrecio(unittest.TestCase):
         self.assertEqual(calcularPrecio(tarifa1, tiempoDeReservacionr1), 4800.00)
     
     #Caso de prueba con el borde inferior
-    #Descripcion:    trata de evaluar una de las
-    #fronteras cuando la reserva es de 15 minutos
+    #Descripcion:    trata de evaluar una de las fronteras 
+    #				 cuando la reserva es de 15 minutos
     #Entrada:    Tiempo de reservacion en minutos: 15 
     #            Tasa en bolivares de la hora: 100,200
     #Salida Esperada    200.00 bolivares
@@ -55,8 +55,10 @@ class TestCalcularPrecio(unittest.TestCase):
         tiempoDeReservacionr1 = [datetime(2015,4,18,13,4), datetime(2015,4,25,13,4)]
         self.assertEqual(calcularPrecio(tarifa1, tiempoDeReservacionr1), 21600.00)
 
-    #Caso de prueba cuabdo se reserva una hora de un dia de semana y una del fin de semana.
-    #Descripcion:    trata de evaluar una de las fronteras cuando la reserva es de 1 hora
+    #Caso de prueba cuabdo se reserva una hora de un dia de semana y una del 
+    #fin de semana.
+    #Descripcion:    trata de evaluar una de las fronteras cuando la reserva 
+    #es de 1 hora
     #en un dia de semana y 1 hora del fin de semana.
     #Entrada:    Tiempo de reservacion en horas: 2 
     #            Tasa en bolivares de la hora: 100,200
@@ -89,15 +91,17 @@ class TestCalcularPrecio(unittest.TestCase):
     #Salida Esperada:    0.24 bolivares
     #Solucion: Satisfactorio, ya que da la respuesta correcta.
     
-    #Nota: Se tuvo que expresar la respuesta de forma que concordara a la salida
-    #en decimal de la funcion debido a problemas de tipos de elementos en el lenguaje.
+    #Nota: Se tuvo que expresar la respuesta de forma que concordara a la
+    # salida
+    #en decimal de la funcion debido a problemas de tipos de elementos en el 
+    #lenguaje.
        
     def testTarifaCentimoDiaSemana(self):
         tarifa1 = Tarifa(100,0.01)
         tiempoDeReservacionr1 = [datetime(2015,4,18,23,4), datetime(2015,4,19,23,4)]
         self.assertEqual(calcularPrecio(tarifa1, tiempoDeReservacionr1), Decimal(0.24).quantize(Decimal('1.00')))
         
-#--------------------------b)Tiempo No reservable-----------------------------------
+#------------------------b)Tiempo No reservable--------------------------------
 
     #Caso de prueba con el borde inferior
     #Descripcion:    trata de evaluar una de las
@@ -139,9 +143,10 @@ class TestCalcularPrecio(unittest.TestCase):
         tiempoDeReservacionr1 = [datetime(2015,4,25,23,4), datetime(2015,4,26,23,4)]
         self.assertRaises(Exception,calcularPrecio,tarifa1,tiempoDeReservacionr1)    
                        
-#--------------------------c)Esquina y Malicia---------------------------------------
+#-----------------------c)Esquina y Malicia------------------------------------
 
-    #Caso de prueba con Caracteres especiales en la tarifa en un dia de fin de semana
+    #Caso de prueba con Caracteres especiales en la tarifa en un dia de fin de 
+    #semana
     #Descripcion:    trata de evaluar si la funcion trabaja correctamente
     #si la tarifa por hora es representada en caracter especial.
     #Entrada:    Tiempo de reservacion en horas: 24
@@ -175,8 +180,10 @@ class TestCalcularPrecio(unittest.TestCase):
     #Salida Esperada:    Excepcion
     #Solucion: Insatisfactorio ya que no se captura la excepcion en la funcion.
     
-    #Nota: se esperaba que diese una excepcion ya que en el enunciado se plantea:
-    #"Las tasas por hora se introducen en bolivares y centimos y no pueden ser negativas."
+    #Nota: se esperaba que diese una excepcion ya que en el enunciado se 
+    #plantea:
+    #"Las tasas por hora se introducen en bolivares y centimos y no pueden ser 
+    #negativas."
     #y se esta usando una tasa en la tarifa que es mucho menor que un centimo.
     
     def testTarifaDecimalesFinSemana(self):
@@ -190,7 +197,8 @@ class TestCalcularPrecio(unittest.TestCase):
     #Entrada:    Tiempo de reservacion en horas: 24
     #            Tasa en bolivares de la hora: 100,200
     #Salida Esperada:    Excepcion
-    #Solucion: Insatisfactorio ya que no se captura la excepcion en la funcion.        
+    #Solucion: Insatisfactorio ya que no se captura la excepcion en la 
+    #funcion.        
 
     def testInvertirOrdenReserva(self):
         tarifa1 = Tarifa(100,200)
