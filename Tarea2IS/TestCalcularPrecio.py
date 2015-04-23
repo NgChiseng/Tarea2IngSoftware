@@ -2,6 +2,7 @@
 Created on 21/4/2015
 
 @author: NgChiseng
+@author: Maria Lourdes
 '''
 import unittest
 from calcularPrecio import calcularPrecio,Tarifa
