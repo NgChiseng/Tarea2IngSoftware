@@ -1,7 +1,7 @@
 '''
 Created on 21/4/2015
 
-@author: Chiseng
+@author: NgChiseng
 '''
 import unittest
 from calcularPrecio import calcularPrecio,Tarifa
@@ -14,7 +14,7 @@ class TestCalcularPrecio(unittest.TestCase):
     
     #Caso de prueba Normal con un dia de la semana
     #Entrada:    Tiempo de reservacion en horas: 24
-    #            Tasa en bolivares de la hora: 100
+    #            Tasa en bolivares de la hora: 100,200
     #Salida Esperada:    2400.00 bolivares
     #Solucion: Satisfactorio, ya que da la respuesta correcta.
     
@@ -27,7 +27,7 @@ class TestCalcularPrecio(unittest.TestCase):
     #Descripcion:    trata de evaluar una de las
     #fronteras cuando la reserva es de 15 minutos
     #Entrada:    Tiempo de reservacion en minutos: 15 
-    #            Tasa en bolivares de la hora: 100
+    #            Tasa en bolivares de la hora: 100,200
     #Salida Esperada    100.00 bolivares
     #Solucion: Insatisfactorio ya que no da la respuesta correcta.
     
@@ -46,7 +46,7 @@ class TestCalcularPrecio(unittest.TestCase):
     #Descripcion:    trata de evaluar una de las
     #fronteras cuando la reserva es de 7 dias
     #Entrada:    Tiempo de reservacion en horas: 24*7 = 168  
-    #            Tasa en bolivares de la hora: 100
+    #            Tasa en bolivares de la hora: 100,200
     #Salida Esperada    (2400.00*5)+(4800.00*2) = 21600.00 bolivares
     #Solucion: Satisfactorio, ya que da la respuesta correcta.
 
@@ -59,7 +59,7 @@ class TestCalcularPrecio(unittest.TestCase):
     #Descripcion:    trata de evaluar una de las
     #fronteras cuando la reserva es de 15 minutos
     #Entrada:    Tiempo de reservacion en minutos: 15 
-    #            Tasa en bolivares de la hora: 100
+    #            Tasa en bolivares de la hora: 100,200
     #Salida Esperada    25.00 bolivares
     #Solucion: Satisfactorio, ya que da la respuesta correcta.
     
@@ -74,7 +74,7 @@ class TestCalcularPrecio(unittest.TestCase):
     #Descripcion:    trata de evaluar una de las
     #fronteras cuando la reserva es de 7 dias
     #Entrada:    Tiempo de reservacion en horas: 24*7 = 168  
-    #            Tasa en bolivares de la hora: 100
+    #            Tasa en bolivares de la hora: 100,200
     #Salida Esperada    (2400.00*5)+(4800.00*2) = 21600.00 bolivares
     #Solucion: Satisfactorio, ya que da la respuesta correcta.
     
@@ -87,7 +87,7 @@ class TestCalcularPrecio(unittest.TestCase):
     #Descripcion:    trata de evaluar si la funcion trabaja
     #correctamente si la tarifa por hora es cero.
     #Entrada:    Tiempo de reservacion en horas: 24
-    #            Tasa en bolivares de la hora: 0
+    #            Tasa en bolivares de la hora: 0,200
     #Salida Esperada:    0 bolivares
     #Solucion: Satisfactorio, ya que da la respuesta correcta.
     
@@ -100,7 +100,7 @@ class TestCalcularPrecio(unittest.TestCase):
     #Descripcion:    trata de evaluar si la funcion trabaja correctamente
     #si la tarifa por hora es representada en centimos.
     #Entrada:    Tiempo de reservacion en horas: 24
-    #            Tasa en bolivares de la hora: 0.01
+    #            Tasa en bolivares de la hora: 0.01,200
     #Salida Esperada:    0.24 bolivares
     #Solucion: Satisfactorio, ya que da la respuesta correcta.
     
@@ -118,7 +118,7 @@ class TestCalcularPrecio(unittest.TestCase):
     #Descripcion:    trata de evaluar una de las
     #fronteras cuando la reserva es de 14 minutos
     #Entrada:    Tiempo de reservacion en minutos: 15 
-    #            Tasa en bolivares de la hora: 100
+    #            Tasa en bolivares de la hora: 100,200
     #Salida Esperada:    Error sobre menos de 15 minutos
     #Solucion: Satisfactorio, ya que da la respuesta correcta.
           
@@ -131,7 +131,7 @@ class TestCalcularPrecio(unittest.TestCase):
     #Descripcion:    trata de evaluar una de las
     #fronteras cuando la reserva es de 7 dias y 1 minuto
     #Entrada:    Tiempo de reservacion en horas: 24*7 + 1 = 169  
-    #            Tasa en bolivares de la hora: 100
+    #            Tasa en bolivares de la hora: 100,200
     #Salida Esperada:    Error sobre mas de 7 dias
     #Solucion: Satisfactorio, ya que da la respuesta correcta.
 
@@ -145,7 +145,7 @@ class TestCalcularPrecio(unittest.TestCase):
     #Descripcion:    trata de evaluar si la funcion trabaja correctamente
     #si la tarifa por hora es representada en numeros negativos.
     #Entrada:    Tiempo de reservacion en horas: 24
-    #            Tasa en bolivares de la hora: -100
+    #            Tasa en bolivares de la hora: -100,200
     #Salida Esperada:    Excepcion de tarifas negativas
     #Solucion: Satisfactorio, ya que da la respuesta correcta.
     
@@ -173,7 +173,7 @@ class TestCalcularPrecio(unittest.TestCase):
     #Descripcion:    trata de evaluar si la funcion trabaja correctamente
     #cuando los datos de la resrva son numeros entero y no fechas.
     #Entrada:    Tiempo de reservacion en horas: Numeros enteros cualquiera
-    #            Tasa en bolivares de la hora: 100
+    #            Tasa en bolivares de la hora: 100,200
     #Salida Esperada:    Excepcion
     #Solucion: Insatisfactorio ya que no se captura la excepcion en la funcion.
     
@@ -186,7 +186,7 @@ class TestCalcularPrecio(unittest.TestCase):
     #Descripcion:    trata de evaluar si la funcion trabaja correctamente
     #si la tarifa por hora es representada en decimales.
     #Entrada:    Tiempo de reservacion en horas: 24
-    #            Tasa en bolivares de la hora: 0.0001
+    #            Tasa en bolivares de la hora: 0.0001,200
     #Salida Esperada:    Excepcion
     #Solucion: Insatisfactorio ya que no se captura la excepcion en la funcion.
     
